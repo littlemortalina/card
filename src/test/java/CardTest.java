@@ -39,12 +39,12 @@ public class CardTest {
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
         driver.findElement(By.className("button")).click();
 
-        WebElement result = driver.findElement(By.className("Success_successBlock__2L3Cw"));
+        WebElement result = driver.findElement(By.cssSelector("[data-test-id = order-success]"));
         assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", result.getText().trim());
     }
 
     @Test
-    void ShouldReturnMistakeWithBlankName() {
+    void shouldReturnMistakeWithBlankName() {
         WebElement form = driver.findElement(By.cssSelector("form"));
         form.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79031465678");
         driver.findElement(By.cssSelector("[data-test-id=agreement]")).click();
@@ -55,7 +55,7 @@ public class CardTest {
     }
 
     @Test
-    void ShouldReturnMistakeWithLatinName() {
+    void shouldReturnMistakeWithLatinName() {
 
         WebElement form = driver.findElement(By.cssSelector("form"));
         form.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ivan Ivanov");
@@ -68,7 +68,7 @@ public class CardTest {
     }
 
     @Test
-    void ShouldReturnMistakeWithBlankPhone() {
+    void shouldReturnMistakeWithBlankPhone() {
 
         WebElement form = driver.findElement(By.cssSelector("form"));
         form.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
@@ -81,7 +81,7 @@ public class CardTest {
     }
 
     @Test
-    void ShouldReturnMistakeWithShortPhone() {
+    void shouldReturnMistakeWithShortPhone() {
 
         WebElement form = driver.findElement(By.cssSelector("form"));
         form.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
@@ -95,7 +95,7 @@ public class CardTest {
     }
 
     @Test
-    void ShouldReturnMistakeWithBlankAgreement() {
+    void shouldReturnMistakeWithBlankAgreement() {
 
         WebElement form = driver.findElement(By.cssSelector("form"));
         form.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Иван Иванов");
@@ -108,7 +108,7 @@ public class CardTest {
     }
 
     @Test
-    void ShouldReturnFirstIfFormIsBlank() {
+    void shouldReturnFirstIfFormIsBlank() {
 
         WebElement form = driver.findElement(By.cssSelector("form"));
         driver.findElement(By.className("button")).click();
@@ -119,7 +119,7 @@ public class CardTest {
     }
 
     @Test
-    void ShouldReturnFirstIfPhoneAndNameIsInvalid() {
+    void shouldReturnFirstIfPhoneAndNameIsInvalid() {
         WebElement form = driver.findElement(By.cssSelector("form"));
         form.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Ivan Ivanov");
         form.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+790314656");
